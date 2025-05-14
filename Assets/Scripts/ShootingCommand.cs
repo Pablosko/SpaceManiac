@@ -13,6 +13,7 @@ public class ShootingCommand : MonoBehaviour
     public float arc = 0f; // angle in degrees
 
     private float fireCooldown = 0f;
+    private readonly float fixedCooldown = 0.5f;  // Cooldown fijo de 0.5 segundos
 
     void Update()
     {
@@ -21,7 +22,7 @@ public class ShootingCommand : MonoBehaviour
         if (Input.GetKey(KeyCode.Space) && fireCooldown <= 0f)
         {
             Fire();
-            fireCooldown = 1f / attackSpeed;
+            fireCooldown = fixedCooldown; // Reiniciamos cooldown fijo
         }
     }
 

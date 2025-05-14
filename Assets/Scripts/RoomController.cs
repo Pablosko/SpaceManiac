@@ -60,6 +60,9 @@ public class RoomController : MonoBehaviour
 
         if (enemySpawner != null)
             enemySpawner.SetActive(true);
+
+        rewardDropPrefab.SetActive(false);
+        rewardSpawned = false;
     }
 
     void DeactivateRoom()

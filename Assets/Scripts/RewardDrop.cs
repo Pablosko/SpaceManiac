@@ -12,7 +12,20 @@ public class RewardDrop : MonoBehaviour
 
     private bool isInitialized = false;
 
-   void OnEnable()
+    public GameObject enemySpawner;
+
+    private bool rewardSpawned = false;
+
+    /*private void Update()
+    {
+        if (!rewardSpawned && enemySpawner.GetComponent<EnemySpawner>().enemyCount == 0)
+        {
+            gameObject.SetActive(true);
+            rewardSpawned = true;  // Marcar que ya activamos la recompensa
+        }
+    }*/
+
+    void OnEnable()
     {
         if (!isInitialized)
         {
