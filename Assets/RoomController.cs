@@ -29,14 +29,14 @@ public class RoomController : MonoBehaviour
         }
     }
 
-    void OnTriggerExit2D(Collider2D other)
+    /*void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player") && isPlayerInside)
         {
             isPlayerInside = false;
             DeactivateRoom();
         }
-    }
+    }*/
 
     void ActivateRoom()
     {

@@ -18,6 +18,8 @@ public class EnemySpawner : MonoBehaviour
     private float timer;
     private Camera mainCam;
     int count;
+
+    public BoxCollider2D spawnAreaCollider;
     void Start()
     {
         mainCam = Camera.main;
@@ -73,7 +75,7 @@ public class EnemySpawner : MonoBehaviour
         {
             // Elegir un lado para spawn (puedes ajustarlo a tu necesidad)
             int side = Random.Range(0, 4);
-            Vector2 spawnPos = GetSpawnPosition(side);
+            Vector2 spawnPos = GetSpawnPosition();
 
             // Instanciamos el enemigo en la escena
             GameObject enemy = Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
@@ -86,37 +88,20 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    Vector2 GetSpawnPosition(int side)
+    Vector2 GetSpawnPosition()
     {
-        Vector3 camPos = mainCam.transform.position;
-        float vertExtent = mainCam.orthographicSize;
-        float horzExtent = vertExtent * mainCam.aspect;
-
-        switch (side)
+        if (spawnAreaCollider == null)
         {
-            case 0: // arriba
-                return new Vector2(
-                    Random.Range(camPos.x - horzExtent - spawnAreaPadding.x, camPos.x + horzExtent + spawnAreaPadding.x),
-                    camPos.y + vertExtent + spawnOffset
-                );
-            case 1: // abajo
-                return new Vector2(
-                    Random.Range(camPos.x - horzExtent - spawnAreaPadding.x, camPos.x + horzExtent + spawnAreaPadding.x),
-                    camPos.y - vertExtent - spawnOffset
-                );
-            case 2: // derecha
-                return new Vector2(
-                    camPos.x + horzExtent + spawnOffset,
-                    Random.Range(camPos.y - vertExtent - spawnAreaPadding.y, camPos.y + vertExtent + spawnAreaPadding.y)
-                );
-            case 3: // izquierda
-                return new Vector2(
-                    camPos.x - horzExtent - spawnOffset,
-                    Random.Range(camPos.y - vertExtent - spawnAreaPadding.y, camPos.y + vertExtent + spawnAreaPadding.y)
-                );
-            default:
-                return camPos;
+            Debug.LogWarning("Spawn area collider no asignado, usando posición del spawner.");
+            return transform.position;
         }
+
+        Bounds bounds = spawnAreaCollider.bounds;
+
+        float x = Random.Range(bounds.min.x + spawnAreaPadding.x, bounds.max.x - spawnAreaPadding.x);
+        float y = Random.Range(bounds.min.y + spawnAreaPadding.y, bounds.max.y - spawnAreaPadding.y);
+
+        return new Vector2(x, y);
     }
 
 }
