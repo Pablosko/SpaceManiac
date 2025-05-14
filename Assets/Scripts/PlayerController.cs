@@ -42,5 +42,30 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void IncreaseDamage(float amount)
+    {
+        // Supón que tienes un parámetro damage, lo incrementas aquí
+        // damage += amount;
+        Debug.Log("dmg");
+    }
+
+    public void IncreaseFireRate(float amount)
+    {
+        // Incrementar la cadencia de disparo o reducir cooldown
+        Debug.Log("fire rate");
+    }
+
+    public void Heal(float amount)
+    {
+        // Incrementar la vida actual
+        Debug.Log("heal");
+    }
+
+    public void IncreaseSpeed(float amount)
+    {
+        moveSpeed += amount;
+        Debug.Log("speed");
+    }
+
 
 }
