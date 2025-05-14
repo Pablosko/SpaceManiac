@@ -15,6 +15,8 @@ public class Enemy : MonoBehaviour
     private ShootingCommand shooter;
     private float shootTimer;
 
+    public EnemySpawner enemySpawner;
+
     void Start()
     {
         var players = FindObjectsByType<PlayerController>(FindObjectsSortMode.None);
@@ -53,4 +55,5 @@ public class Enemy : MonoBehaviour
     {
         shootTimer = Random.Range(minShootDelay, maxShootDelay);
     }
+
 }
