@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class RoomCameraController : MonoBehaviour
@@ -11,6 +12,9 @@ public class RoomCameraController : MonoBehaviour
     // Tamaño de la cámara en unidades (half-height, half-width)
     private float camHalfHeight;
     private float camHalfWidth;
+
+    private Vector3 originalPosition;  // Para restaurar después del shake
+    private Coroutine shakeCoroutine;
 
     void Start()
     {
@@ -73,5 +77,32 @@ public class RoomCameraController : MonoBehaviour
     {
         targetPosition = new Vector3(newPosition.x, newPosition.y, transform.position.z);
         isMoving = true;
+    }
+
+    public void ShakeCamera(float duration = 0.3f, float magnitude = 0.2f)
+    {
+        if (shakeCoroutine != null)
+            StopCoroutine(shakeCoroutine);
+
+        shakeCoroutine = StartCoroutine(DoShake(duration, magnitude));
+    }
+
+    private IEnumerator DoShake(float duration, float magnitude)
+    {
+        float elapsed = 0f;
+        Vector3 originalPos = transform.position;
+
+        while (elapsed < duration)
+        {
+            float offsetX = Random.Range(-1f, 1f) * magnitude;
+            float offsetY = Random.Range(-1f, 1f) * magnitude;
+
+            transform.position = new Vector3(originalPos.x + offsetX, originalPos.y + offsetY, originalPos.z);
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.position = originalPos;
     }
 }

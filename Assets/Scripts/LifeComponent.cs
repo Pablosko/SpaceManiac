@@ -9,6 +9,7 @@ public class LifeComponent : MonoBehaviour
 
     [Header("Events")]
     public UnityEvent onDeath;
+    public UnityEvent onDamage;  // NUEVO evento para daño
 
     void Awake()
     {
@@ -21,6 +22,8 @@ public class LifeComponent : MonoBehaviour
 
         currentHealth -= damage;
         currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
+
+        onDamage?.Invoke();  // Invocar evento daño cada vez que recibe daño
 
         if (currentHealth <= 0f)
         {

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class RoomController : MonoBehaviour
@@ -91,4 +92,5 @@ public class RoomController : MonoBehaviour
             reward.rewardType = (RewardDrop.RewardType)randomIndex;
         }
     }
+
 }

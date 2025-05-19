@@ -1573,11 +1573,13 @@ MonoBehaviour:
   typingSpeed: 0.05
   displayDuration: 5
   goodPrompts:
-  - "Simulaci\xF3n de combate orbital, Misi\xF3n 12: Aislamiento de enjambre."
-  - Subjetivo Alfa, tu rendimiento ha superado los protocolos de contingencia emocional.
-  - Activando protocolos de defensa, fase uno completada.
-  - "Tu estrategia ha optimizado la neutralizaci\xF3n de objetivos hostiles."
-  - "Prep\xE1rate para la siguiente fase de entrenamiento, Subjetivo Alfa."
+  - "Simulaci\xF3n de combate orbital, Misi\xF3n 12: Aislamiento del enjambre, Ender
+    Wiggin."
+  - "Almirante Graff autoriza inicio de formaci\xF3n para el Escuadr\xF3n Drag\xF3n."
+  - "Petra Arkanian informa: 'Optimizaci\xF3n de estrategia para neutralizar enjambres
+    confirmada.'"
+  - El Comando de la Flota Internacional activa protocolos de defensa avanzada.
+  - "Preparando a Ender para la simulaci\xF3n final en la Escuela de Batalla."
   brokenPrompts:
   - "\xA1%#@ Error en m\xF3dulo de comunicaci\xF3n #$%!"
   - Est@d0 d3 $1$t3m@ $incr0n1z@d0.

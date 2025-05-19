@@ -1,6 +1,8 @@
+using TMPro.Examples;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(LifeComponent))]
 public class PlayerController : MonoBehaviour
 {
     [Header("Movement")]
@@ -11,9 +13,24 @@ public class PlayerController : MonoBehaviour
     private Vector2 inputDirection;
     private Vector2 lastMoveDirection = Vector2.up; // Inicialmente hacia arriba
 
+    private LifeComponent life;
+    private RoomCameraController cameraController;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        life = GetComponent<LifeComponent>();
+        cameraController = Camera.main.GetComponent<RoomCameraController>();
+
+        if (life != null)
+            life.onDamage.AddListener(OnPlayerDamaged);
+    }
+
+    private void OnPlayerDamaged()
+    {
+        if (cameraController != null)
+            cameraController.ShakeCamera(0.3f, 0.2f);
     }
 
     void Update()
