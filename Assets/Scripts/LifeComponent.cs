@@ -11,9 +11,17 @@ public class LifeComponent : MonoBehaviour
     public UnityEvent onDeath;
     public UnityEvent onDamage;  // NUEVO evento para daño
 
+    public AudioClip dieSound;
+
+    private AudioSource audioSource;
+
     void Awake()
     {
         currentHealth = maxHealth;
+
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+            audioSource = gameObject.AddComponent<AudioSource>();
     }
 
     public void TakeDamage(float damage)
@@ -27,6 +35,7 @@ public class LifeComponent : MonoBehaviour
 
         if (currentHealth <= 0f)
         {
+            DieSound();
             Die();
         }
     }
@@ -41,6 +50,12 @@ public class LifeComponent : MonoBehaviour
     public void Heal(float amount)
     {
         currentHealth = Mathf.Clamp(currentHealth + amount, 0f, maxHealth);
+    }
+
+    private void DieSound()
+    {
+        if (dieSound != null)
+            audioSource.PlayOneShot(dieSound);
     }
 
     public bool IsAlive => currentHealth > 0f;

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Audio;
 
 public class ShootingCommand : MonoBehaviour
 {
@@ -15,6 +16,17 @@ public class ShootingCommand : MonoBehaviour
     private float fireCooldown = 0f;
     private readonly float fixedCooldown = 0.5f;  // Cooldown fijo de 0.5 segundos
 
+    public AudioClip playerShootSound;
+
+    private AudioSource audioSource;
+
+    void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+            audioSource = gameObject.AddComponent<AudioSource>();
+    }
+
     void Update()
     {
         fireCooldown -= Time.deltaTime;
@@ -23,6 +35,7 @@ public class ShootingCommand : MonoBehaviour
         {
             Fire();
             fireCooldown = fixedCooldown; // Reiniciamos cooldown fijo
+            PlayShootSound();
         }
     }
 
@@ -45,4 +58,11 @@ public class ShootingCommand : MonoBehaviour
             bullet.SetDirection(direction);
         }
     }
+
+    private void PlayShootSound()
+    {
+        if (playerShootSound != null)
+            audioSource.PlayOneShot(playerShootSound);
+    }
+
 }

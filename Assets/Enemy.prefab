@@ -132,6 +132,8 @@ MonoBehaviour:
   rotationSpeed: 5000
   minShootDelay: 1.5
   maxShootDelay: 3
+  enemySpawner: {fileID: 0}
+  enemyShootSound: {fileID: 8300000, guid: 32a21dc72090af74294670d6fbd68ed9, type: 3}
 --- !u!114 &6841780785337957243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,6 +151,7 @@ MonoBehaviour:
   attackSpeed: 1
   bullets: 1
   arc: 0
+  playerShootSound: {fileID: 8300000, guid: 32a21dc72090af74294670d6fbd68ed9, type: 3}
 --- !u!50 &3325946629906209974
 Rigidbody2D:
   serializedVersion: 5
@@ -193,6 +196,10 @@ MonoBehaviour:
   onDeath:
     m_PersistentCalls:
       m_Calls: []
+  onDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  dieSound: {fileID: 8300000, guid: 6a4206d313879a74588bb95f664f9fc0, type: 3}
 --- !u!58 &6199111077661111578
 CircleCollider2D:
   m_ObjectHideFlags: 0

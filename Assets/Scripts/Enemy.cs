@@ -17,8 +17,16 @@ public class Enemy : MonoBehaviour
 
     public EnemySpawner enemySpawner;
 
+    public AudioClip enemyShootSound;
+
+    private AudioSource audioSource;
+
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+            audioSource = gameObject.AddComponent<AudioSource>();
+
         var players = FindObjectsByType<PlayerController>(FindObjectsSortMode.None);
         if (players.Length > 0)
             player = players[0].transform;
@@ -47,6 +55,7 @@ public class Enemy : MonoBehaviour
         if (shootTimer <= 0f && shooter != null)
         {
             shooter.Fire();
+            EnemyShootSound();
             ResetShootTimer();
         }
     }
@@ -54,6 +63,12 @@ public class Enemy : MonoBehaviour
     void ResetShootTimer()
     {
         shootTimer = Random.Range(minShootDelay, maxShootDelay);
+    }
+
+    private void EnemyShootSound()
+    {
+        if (enemyShootSound != null)
+            audioSource.PlayOneShot(enemyShootSound);
     }
 
 }
