@@ -81,6 +81,10 @@ public class RoomCameraController : MonoBehaviour
 
     public void ShakeCamera(float duration = 0.3f, float magnitude = 0.2f)
     {
+        // Comprobar si el shake está habilitado (1 = activado, 0 = desactivado)
+        if (PlayerPrefs.GetInt("ShakeEnabled", 1) == 0)
+            return; // No hacer shake si está desactivado
+
         if (shakeCoroutine != null)
             StopCoroutine(shakeCoroutine);
 

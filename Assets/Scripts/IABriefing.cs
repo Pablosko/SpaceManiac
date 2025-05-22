@@ -61,4 +61,32 @@ public class IABriefing : MonoBehaviour
         panel.SetActive(false);
         isDisplaying = false;
     }
+
+    // Cambiar duración desde índice del dropdown
+    public void SetDisplayDurationFromIndex(int index)
+    {
+        switch (index)
+        {
+            case 0: displayDuration = 5f; break; // rápido
+            case 1: displayDuration = 7f; break; // medio
+            case 2: displayDuration = 10f; break; // lento
+            default: displayDuration = 7f; break;
+        }
+    }
+
+    // Cambiar fuente desde índice del dropdown
+    public void SetFont(TMP_FontAsset font)
+    {
+        TMP_FontAsset futuristFont = Resources.Load<TMP_FontAsset>("Audiowide-Regular SDF");  // Ejemplo
+        TMP_FontAsset normalFont = Resources.Load<TMP_FontAsset>("LiberationSans SDF");
+
+        if (font == futuristFont && futuristFont != null)
+        {
+            messageText.font = futuristFont;
+        }
+        else if (font == normalFont && normalFont != null)
+        {
+            messageText.font = normalFont;
+        }
+    }
 }
