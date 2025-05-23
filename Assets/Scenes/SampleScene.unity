@@ -2844,6 +2844,7 @@ GameObject:
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
   - component: {fileID: 330585548}
+  - component: {fileID: 330585549}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2983,6 +2984,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1995734728}
   smoothSpeed: 3
+--- !u!114 &330585549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cea50ac069eb914e9193640e90c7659, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: 2c852aa0cd29ec440b542dfdad6736ae, type: 2}
+  musicSlider: {fileID: 2127165844}
+  sfxSlider: {fileID: 262049061}
 --- !u!1 &333037101
 GameObject:
   m_ObjectHideFlags: 0
@@ -5705,7 +5721,7 @@ AudioSource:
   m_GameObject: {fileID: 709100794}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 8207726677900765511, guid: 2c852aa0cd29ec440b542dfdad6736ae, type: 2}
   m_audioClip: {fileID: 8300000, guid: 789690ae1fe17e64fbdb5a7913b0941f, type: 3}
   m_Resource: {fileID: 8300000, guid: 789690ae1fe17e64fbdb5a7913b0941f, type: 3}
   m_PlayOnAwake: 1
@@ -14662,6 +14678,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3382101212568266574, guid: f82d1c474f6a2424d90a68ef9346a4a4, type: 3}
+      propertyPath: audioMixer
+      value: 
+      objectReference: {fileID: 24100000, guid: 2c852aa0cd29ec440b542dfdad6736ae, type: 2}
+    - target: {fileID: 3382101212568266574, guid: f82d1c474f6a2424d90a68ef9346a4a4, type: 3}
       propertyPath: attackSpeed
       value: 10
       objectReference: {fileID: 0}
@@ -14685,6 +14705,10 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 4827746376496085312, guid: f82d1c474f6a2424d90a68ef9346a4a4, type: 3}
+      propertyPath: audioMixer
+      value: 
+      objectReference: {fileID: 24100000, guid: 2c852aa0cd29ec440b542dfdad6736ae, type: 2}
     - target: {fileID: 7104235393749042799, guid: f82d1c474f6a2424d90a68ef9346a4a4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -51.2

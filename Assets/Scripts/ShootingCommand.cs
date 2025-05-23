@@ -20,11 +20,25 @@ public class ShootingCommand : MonoBehaviour
 
     private AudioSource audioSource;
 
+    public AudioMixer audioMixer;
+    public string audioMixerGroupName = "SFX";
+
     void Awake()
     {
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
             audioSource = gameObject.AddComponent<AudioSource>();
+
+        if (audioMixer != null)
+        {
+            // Obtener el AudioMixerGroup con el nombre especificado
+            AudioMixerGroup[] groups = audioMixer.FindMatchingGroups(audioMixerGroupName);
+            if (groups.Length > 0)
+            {
+                audioSource.outputAudioMixerGroup = groups[0];
+                Debug.Log($"AudioSource asignado al grupo '{audioMixerGroupName}'");
+            }
+        }
     }
 
     void Update()

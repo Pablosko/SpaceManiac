@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Audio;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Enemy : MonoBehaviour
@@ -21,6 +22,9 @@ public class Enemy : MonoBehaviour
 
     private AudioSource audioSource;
 
+    public AudioMixer audioMixer;
+    public string audioMixerGroupName = "SFX";
+
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -33,6 +37,17 @@ public class Enemy : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         shooter = GetComponent<ShootingCommand>();
         ResetShootTimer();
+
+        if (audioMixer != null)
+        {
+            // Obtener el AudioMixerGroup con el nombre especificado
+            AudioMixerGroup[] groups = audioMixer.FindMatchingGroups(audioMixerGroupName);
+            if (groups.Length > 0)
+            {
+                audioSource.outputAudioMixerGroup = groups[0];
+                Debug.Log($"AudioSource asignado al grupo '{audioMixerGroupName}'");
+            }
+        }
     }
 
     void FixedUpdate()
